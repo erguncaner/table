@@ -1,0 +1,15 @@
+{
+    "name": "erguncaner/table",
+    "description": "Very simple table generator for PHP",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    },
+    "authors": [
+        {
+            "name": "Caner ERGÜN",
+            "email": "erguncaner@gmail.com"
+        }
+    ],
+    "require": {}
+}
