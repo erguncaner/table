@@ -11,5 +11,13 @@
             "email": "erguncaner@gmail.com"
         }
     ],
-    "require": {}
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Table\\":"src/Table/"
+        }
+    }
 }
