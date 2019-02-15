@@ -4,19 +4,18 @@ namespace erguncaner\Table;
 
 class TableColumn
 {
-    protected $label;
+    protected $content;
 
     protected $attributes;
 
-    protected $params;
-
-    public function __construct($params = [])
+    public function __construct($content, $attributes = [])
     {
-        $this->label = isset($params['label']) ? $params['label'] : null;
+        $this->content = $content;
+        $this->attributes = $attributes;
     }
 
     public function html()
     {
-        return '<th>'.$this->label.'</th>';
+        return "<th".Attribute::str($this->attributes).">".$this->content."</th>";
     }
 }

@@ -48,8 +48,8 @@ class TableTest extends TestCase
             'class' => 'table table-striped'
         ]);
         
-        $table->addColumn('id', new TableColumn(['label'=>'ID']));
-        $table->addColumn('title', new TableColumn(['label'=>'TITLE']));
+        $table->addColumn('id', new TableColumn('#'));
+        $table->addColumn('title', new TableColumn('Title'));
 
         foreach($this->data as $row){
 
@@ -67,7 +67,7 @@ class TableTest extends TestCase
 
         $expectedHtml = "<table id=\"post-table\" class=\"table table-striped\">
         <thead>
-            <tr><th>ID</th><th>TITLE</th></tr>
+            <tr><th>#</th><th>Title</th></tr>
         </thead>
         <tbody>
             <tr id=\"row-1\"><td>1</td><td>A</td></tr>
