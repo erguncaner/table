@@ -1,61 +1,85 @@
 <?php 
+/*
+ * This file is part of the erguncaner/table.
+ * (c) Caner Ergün <erguncaner@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace erguncaner\Table;
 
+/**
+ * Main Table class, you can add columns and rows to it
+ * 
+ * @author Caner Ergün <erguncaner@gmail.com>
+ */
 class Table
 {
+    /**
+     * Table tag attributes
+     * 
+     * @var array
+     */
     protected $attributes = [];
 
+    /**
+     * Table columns
+     * 
+     * @var array
+     */
     protected $columns = [];
 
+    /**
+     * Table rows
+     * 
+     * @var array
+     */
     protected $rows = [];
 
+    /**
+     * Table data
+     * 
+     * @var array
+     */
     protected $data = [];
 
+    /**
+     * Constructor
+     * 
+     * @param arary $attributes
+     */
     public function __construct($attributes = [])
     {
         $this->attributes = $attributes;
-
-        $this->initData();
-        $this->initColumns();
-        $this->initRows();
-    }
-    
-    protected function initColumns()
-    {
-
     }
 
-    protected function initRows()
-    {
-        
-    }
-
-    protected function initData()
-    {
-        
-    }
-
-    public function columns()
-    {
-        return $this->columns;
-    }
-
-    public function rows()
-    {
-        return $this->rows;
-    }
-
+    /**
+     * Adds a new Column
+     * 
+     * @param string $name
+     * @param TableColumn $column
+     */
     public function addColumn($name, TableColumn $column)
     {
         $this->columns[$name] = $column;
     }
 
+    /**
+     * Returns columns array
+     * 
+     * @return array
+     */
     public function getColumns()
     {
         return $this->columns;
     }
 
+    /**
+     * Adds a new Row
+     * 
+     * @param TableRow $row
+     */
     public function addRow(TableRow $row)
     {
         $row->setTable($this);
@@ -63,11 +87,21 @@ class Table
         $this->rows[] = $row;
     }
 
+    /**
+     * Returns rows
+     * 
+     * @return array
+     */
     public function getRows()
     {
         return $this->rows;
     }
 
+    /**
+     * Generates html
+     * 
+     * @return string
+     */
     public function html()
     {
         $html  = "\n<table".Attribute::str($this->attributes).">\n";
@@ -79,6 +113,11 @@ class Table
         return $html;
     }
 
+    /**
+     * Generates thead html
+     * 
+     * @return string
+     */
     public function headHtml()
     {
         $html = "<thead>\n    <tr>";        
@@ -90,6 +129,11 @@ class Table
         return $html;
     }
     
+    /**
+     * Generates tbody html
+     * 
+     * @return string
+     */
     public function bodyHtml()
     {
         $html = "<tbody>\n";
@@ -101,6 +145,11 @@ class Table
         return $html;
     }
 
+    /**
+     * Generates tfoot html
+     * 
+     * @return string
+     */
     public function footHtml()
     {
         return "<tfoot></tfoot>\n";

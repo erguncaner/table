@@ -9,6 +9,11 @@ use erguncaner\Table\Attribute;
 
 class TableTest extends TestCase
 {
+    /**
+     * Sample data
+     * 
+     * @var array
+     */
     private $data;
 
     public function setUp()
@@ -21,6 +26,9 @@ class TableTest extends TestCase
         ];
     }
 
+    /**
+     * Tests attribute generation
+     */
     public function testAttributes()
     {
         $attrs = ['class'=>'active', 'id'=>'item-1'];
@@ -29,6 +37,9 @@ class TableTest extends TestCase
         $this->assertEquals(' class="active" id="item-1"', $str);
     }
 
+    /**
+     * Tests row and cell generation
+     */
     public function testRowsAndCells()
     {
         $cells = [
@@ -41,6 +52,9 @@ class TableTest extends TestCase
         $this->assertEquals("   <tr class=\"active\"><td>1</td><td class=\"title\">Title</td></tr>", $row->html());
     }
 
+    /**
+     * Tests html generation
+     */
     public function testTableHtml()
     {
         $table = new Table([
@@ -48,7 +62,7 @@ class TableTest extends TestCase
             'class' => 'table table-striped'
         ]);
         
-        $table->addColumn('id', new TableColumn('#'));
+        $table->addColumn('id', new TableColumn('#', ['class'=>'id-column']));
         $table->addColumn('title', new TableColumn('Title'));
 
         foreach($this->data as $row){
@@ -67,7 +81,7 @@ class TableTest extends TestCase
 
         $expectedHtml = "<table id=\"post-table\" class=\"table table-striped\">
         <thead>
-            <tr><th>#</th><th>Title</th></tr>
+            <tr><th class=\"id-column\">#</th><th>Title</th></tr>
         </thead>
         <tbody>
             <tr id=\"row-1\"><td>1</td><td>A</td></tr>
