@@ -27,8 +27,8 @@ $table = new Table([
 ]);
 
 // Create table columns with a column key and column object
-$table->addColumn('id', new TableColumn(['label'=>'ID']));
-$table->addColumn('title', new TableColumn(['label'=>'TITLE']));
+$table->addColumn('id', new TableColumn('ID', ['class'=>'id-column']));
+$table->addColumn('title', new TableColumn('TITLE'));
 
 // Then add rows
 foreach($posts as $post){
@@ -56,7 +56,7 @@ This will generate html below
 ```html
 <table id="post-table">
 <thead>
-    <tr><th>ID</th><th>TITLE</th></tr>
+    <tr><th class="id-column">ID</th><th>TITLE</th></tr>
 </thead>
 <tbody>
     <tr id="post-1"><td class="id-cell">1</td><td>Title 1</td></td>
