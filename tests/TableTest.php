@@ -14,10 +14,10 @@ class TableTest extends TestCase
     public function setUp()
     {
         $this->data = [
-            ['id'=>1, 'title'=>'A'],
-            ['id'=>2, 'title'=>'B'],
-            ['id'=>3, 'title'=>'C'],
-            ['id'=>4, 'title'=>'D'],
+            ['id' => 1, 'title' => 'A'],
+            ['id' => 2, 'title' => 'B'],
+            ['id' => 3, 'title' => 'C'],
+            ['id' => 4, 'title' => 'D'],
         ];
     }
 
@@ -39,5 +39,25 @@ class TableTest extends TestCase
         $row = new TableRow($cells, ['class'=>'active']);
 
         $this->assertEquals($row->html(), "\t<tr class=\"active\"><td>1</td><td class=\"title\">Title</td></tr>");
+    }
+
+    public function testTable()
+    {
+        $table = new Table();
+        
+        $table->addColumn('id', new TableColumn(['label'=>'ID']));
+        $table->addColumn('title', new TableColumn(['label'=>'TITLE']));
+
+        foreach($this->data as $row){
+
+            $cells = [
+                'title' => new TableCell($row['title']),
+                'id' => new TableCell($row['id']),                
+            ];
+
+            $table->addRow(new TableRow($cells));
+        }
+
+        echo $table->html();
     }
 }

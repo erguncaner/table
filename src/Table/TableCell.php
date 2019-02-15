@@ -4,6 +4,8 @@ namespace Table;
 
 class TableCell
 {
+    protected $row = null;
+    
     protected $content;
 
     protected $attributes;
@@ -12,6 +14,11 @@ class TableCell
     {
         $this->content = $content;
         $this->attributes = $attributes;
+    }
+
+    public function setRow($row)
+    {
+        $this->row = $row;
     }
 
     public function html()

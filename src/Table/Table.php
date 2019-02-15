@@ -12,8 +12,10 @@ class Table
 
     protected $data = [];
 
-    public function __construct()
+    public function __construct($attributes = [])
     {
+        $this->attributes = $attributes;
+
         $this->initData();
         $this->initColumns();
         $this->initRows();
@@ -49,14 +51,26 @@ class Table
         $this->columns[$name] = $column;
     }
 
+    public function getColumns()
+    {
+        return $this->columns;
+    }
+
     public function addRow(TableRow $row)
     {
+        $row->setTable($this);
+
         $this->rows[] = $row;
+    }
+
+    public function getRows()
+    {
+        return $this->rows;
     }
 
     public function html()
     {
-        $html  = "\n<table>\n";
+        $html  = "\n<table".Attribute::str($this->attributes).">\n";
         $html .= $this->headHtml();
         $html .= $this->bodyHtml();
         $html .= $this->footHtml();
