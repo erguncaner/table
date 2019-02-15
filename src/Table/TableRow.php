@@ -30,7 +30,7 @@ class TableRow
 
     public function html()
     {
-        $html = "\t<tr".Attribute::str($this->attributes).">";
+        $html = "   <tr".Attribute::str($this->attributes).">";
 
         // if table ref is set
         if ($this->table){

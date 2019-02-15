@@ -81,11 +81,11 @@ class Table
 
     public function headHtml()
     {
-        $html = "<thead>\n\t<tr>";        
+        $html = "<thead>\n    <tr>";        
         foreach($this->columns as $col){
             $html .= $col->html();
         }
-        $html .= "</tr>\n<thead>\n";
+        $html .= "</tr>\n</thead>\n";
 
         return $html;
     }
@@ -103,6 +103,6 @@ class Table
 
     public function footHtml()
     {
-        return "<tfoot>\n</tfoot>\n";
+        return "<tfoot></tfoot>\n";
     }
 }
