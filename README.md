@@ -3,10 +3,13 @@ Yet another very simple html table generator for PHP
 Generate a table structure as shown below
 
 ```php
-use Table;
-use TableColumn;
-use TableRow;
-use TableCell;
+
+require_once __DIR__.'/vendor/autoload.php';
+
+use erguncaner\Table\Table;
+use erguncaner\Table\TableColumn;
+use erguncaner\Table\TableRow;
+use erguncaner\Table\TableCell;
 
 // Sample data
 $posts = [
