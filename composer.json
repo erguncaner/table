@@ -2,6 +2,7 @@
     "name": "erguncaner/table",
     "description": "Very simple table generator for PHP",
     "type": "library",
+    "license": "MIT",
     "require-dev": {
         "phpunit/phpunit": "^7.5"
     },
