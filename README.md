@@ -3,10 +3,10 @@ Yet another very simple html table generator for PHP
 Generate a table structure as shown below
 
 ```php
-use erguncaner\Table;
-use erguncaner\TableColumn;
-use erguncaner\TableRow;
-use erguncaner\TableCell;
+use Table;
+use TableColumn;
+use TableRow;
+use TableCell;
 
 // Sample data
 $posts = [
@@ -33,6 +33,7 @@ foreach($posts as $post){
         'title' => new TableCell($post['title']),
     ];
 
+    // define row attributes
     $attrs = [
         'id' => 'post-'.$post['id']
     ];

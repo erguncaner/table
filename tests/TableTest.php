@@ -1,11 +1,11 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Table\Table;
-use Table\TableColumn;
-use Table\TableCell;
-use Table\TableRow;
-use Table\Attribute;
+use erguncaner\Table\Table;
+use erguncaner\Table\TableColumn;
+use erguncaner\Table\TableCell;
+use erguncaner\Table\TableRow;
+use erguncaner\Table\Attribute;
 
 class TableTest extends TestCase
 {

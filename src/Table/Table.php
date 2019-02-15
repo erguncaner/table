@@ -1,6 +1,6 @@
 <?php 
 
-namespace Table;
+namespace erguncaner\Table;
 
 class Table
 {
