@@ -1,5 +1,10 @@
 Yet another very simple html table generator for PHP
 
+
+```
+composer require erguncaner/table dev-master
+```
+
 Generate a table structure as shown below
 
 ```php
