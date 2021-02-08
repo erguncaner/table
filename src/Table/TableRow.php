@@ -97,4 +97,23 @@ class TableRow
 
         return $html;
     }
+
+    /**
+     * Returns row as an array
+     * 
+     * @return array
+     */
+    public function array()
+    {
+        $data = [
+            'cells' => [],
+            'attributes' => $this->attributes
+        ];
+
+        foreach($this->cells as $name => $cell){
+            $data['cells'][$name] = $cell->array();
+        }
+
+        return $data;
+    }
 }

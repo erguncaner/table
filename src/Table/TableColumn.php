@@ -51,4 +51,17 @@ class TableColumn
     {
         return "<th".Attribute::str($this->attributes).">".$this->content."</th>";
     }
+
+    /**
+     * Returns column as an array
+     * 
+     * @return array
+     */
+    public function array()
+    {
+        return [
+            'content' => $this->content,
+            'attributes' => $this->attributes
+        ];
+    }
 }

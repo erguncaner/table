@@ -68,4 +68,17 @@ class TableCell
     {
         return '<td'.Attribute::str($this->attributes).'>'.$this->content.'</td>';
     }
+
+    /**
+     * Returns cell as an array
+     * 
+     * @return array
+     */
+    public function array()
+    {
+        return [
+            'content' => $this->content,
+            'attributes' => $this->attributes
+        ];
+    }
 }
