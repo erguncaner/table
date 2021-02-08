@@ -114,6 +114,28 @@ class Table
     }
 
     /**
+     * Returns table information as an array
+     * 
+     * @return array
+     */
+    public function array()
+    {
+        $data = [
+            'attributes' => $this->attributes,            
+        ];
+
+        foreach($this->columns as $name => $column) {
+            $data['columns'][$name] = $column->array();
+        }
+
+        foreach($this->rows as $row) {
+            $data['rows'][] = $row->array();
+        }
+
+        return $data;
+    }
+
+    /**
      * Generates thead html
      * 
      * @return string

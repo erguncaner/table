@@ -100,4 +100,80 @@ class TableTest extends TestCase
     
         $this->assertXmlStringEqualsXmlString($expectedDom->saveHTML(), $actualDom->saveHTML());
     }
+
+    public function testAsArray()
+    {
+        $table = new Table([
+            'id' => 'post-table',
+            'class' => 'table table-striped'
+        ]);
+        
+        $table->addColumn('id', new TableColumn('#', ['class'=>'id-column']));
+        $table->addColumn('title', new TableColumn('Title'));
+
+        foreach($this->data as $row){
+
+            $cells = [
+                'title' => new TableCell($row['title']),
+                'id' => new TableCell($row['id']),                
+            ];
+
+            $attrs = [
+                'id' => 'row-'.$row['id']
+            ];
+
+            $table->addRow(new TableRow($cells, $attrs));
+        }
+
+        $expected = [
+            'attributes' => [
+                'id' => 'post-table',
+                'class' => 'table table-striped'
+            ],
+            'columns' => [
+                'id' => ['content'=>'#', 'attributes'=>['class'=>'id-column']],
+                'title' => ['content'=>'Title', 'attributes'=>[]]
+            ],
+            'rows' => [
+                [
+                    'cells'=>[
+                        'id' => ['content'=>'1', 'attributes'=>[]],
+                        'title' => ['content'=>'A', 'attributes'=>[]],
+                    ], 
+                    'attributes'=>[
+                        'id' => 'row-1'
+                    ]
+                ],
+                [
+                    'cells'=>[
+                        'id' => ['content'=>'2', 'attributes'=>[]],
+                        'title' => ['content'=>'B', 'attributes'=>[]],
+                    ], 
+                    'attributes'=>[
+                        'id' => 'row-2'
+                    ]
+                ],
+                [
+                    'cells'=>[
+                        'id' => ['content'=>'3', 'attributes'=>[]],
+                        'title' => ['content'=>'C', 'attributes'=>[]],
+                    ], 
+                    'attributes'=>[
+                        'id' => 'row-3'
+                    ]
+                ],
+                [
+                    'cells'=>[
+                        'id' => ['content'=>'4', 'attributes'=>[]],
+                        'title' => ['content'=>'D', 'attributes'=>[]],
+                    ], 
+                    'attributes'=>[
+                        'id' => 'row-4'
+                    ]
+                ],
+            ]
+        ];
+
+        $this->assertEquals($expected, $table->array());
+    }
 }
